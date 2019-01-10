@@ -9,10 +9,8 @@ namespace CSharp.Language.Review
     public class EarnedMark : WeightedMark
     {
         public int Possible { get; private set; }
-        private double _Earned;
-        private string name;
-        private int weight;
 
+        private double _Earned;
         public double Earned
         {
             get { return _Earned; }
@@ -23,10 +21,12 @@ namespace CSharp.Language.Review
                 _Earned = value;
             }
         }
+
         public double Percent
         {  get { return (Earned / Possible) * 100; } }
+
         public double WeightedPercent
-        {  get { return Percent * WeightedPercent / 100; } }
+        {  get { return Percent * Weight / 100; } }
 
         public EarnedMark(WeightedMark markableItem, int possible, double earned)
             : this(markableItem.Name, markableItem.Weight, possible, earned)
